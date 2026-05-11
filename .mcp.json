@@ -9,10 +9,6 @@
         "FEISHU_CHAT_ID": "oc_c0a8434e665e3fe113a4e82de30959c0"
       }
     },
-    "weather": {
-      "command": "py",
-      "args": ["工具/weather-mcp.py"]
-    },
     "feishu-calendar": {
       "command": "py",
       "args": ["工具/feishu-calendar-mcp.py"],
@@ -21,13 +17,9 @@
         "FEISHU_APP_SECRET": "1FFHn4A3RQekxOaFjB1gpfvo0IrB57uh"
       }
     },
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:/Users/lenovo/Desktop/agent"]
-    },
-    "git": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-git", "C:/Users/lenovo/Desktop/agent"]
+    "weather": {
+      "command": "py",
+      "args": ["工具/weather-mcp.py"]
     }
   }
 }
