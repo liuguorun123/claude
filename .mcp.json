@@ -20,6 +20,14 @@
         "FEISHU_APP_ID": "cli_aa8b6d69b4f95bec",
         "FEISHU_APP_SECRET": "1FFHn4A3RQekxOaFjB1gpfvo0IrB57uh"
       }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:/Users/lenovo/Desktop/agent"]
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git", "C:/Users/lenovo/Desktop/agent"]
     }
   }
 }
