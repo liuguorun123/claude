@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py --version)",
+      "Bash(py -m pip show requests)",
+      "Bash(py *)",
+      "mcp__feishu-calendar__get_tomorrow_calendar",
+      "Bash(pip install *)",
+      "Bash(pip3 install *)",
+      "Bash(python -m pip install -r requirements.txt)",
+      "Bash(where python *)",
+      "WebSearch",
+      "WebFetch(domain:smithery.ai)",
+      "Bash(python -m pip install flask requests anthropic)",
+      "Bash(curl *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "feishu",
+    "weather",
+    "feishu-calendar"
+  ]
+}

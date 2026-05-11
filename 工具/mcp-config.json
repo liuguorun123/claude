@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "feishu": {
+      "command": "python",
+      "args": ["C:\\Users\\lenovo\\Desktop\\agent\\工具\\feishu-mcp.py"],
+      "env": {
+        "FEISHU_APP_ID": "cli_aa8b6d69b4f95bec",
+        "FEISHU_APP_SECRET": "1FFHn4A3RQekxOaFjB1gpfvo0IrB57uh",
+        "FEISHU_CHAT_ID": "oc_c0a8434e665e3fe113a4e82de30959c0"
+      }
+    }
+  }
+}
