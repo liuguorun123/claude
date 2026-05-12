@@ -6,6 +6,7 @@ import lark_oapi as lark
 from lark_oapi.api.im.v1 import *
 from claude_handler import call_claude, get_agent_by_command
 from feishu_handler import send_message, reply_message
+from schedule_handler import is_schedule_message, process_schedule_message
 from config import FEISHU_APP_ID, FEISHU_APP_SECRET
 
 # 消息去重缓存
@@ -41,12 +42,25 @@ def do_im_message_receive_v1(data: P2ImMessageReceiveV1) -> None:
 
         print(f"\n收到消息: {text}")
 
-        # 识别Agent并调用Claude
-        agent = get_agent_by_command(text)
-        print(f"调用Agent: {agent['name']}")
-
-        response = call_claude(text, agent)
-        print(f"回复: {response[:100]}...")
+        # 首先检查是否是日程消息
+        if is_schedule_message(text):
+            print("识别为日程消息，调用日程处理器...")
+            schedule_response = process_schedule_message(text)
+            if schedule_response:
+                response = schedule_response
+                print(f"日程回复: {response[:100]}...")
+            else:
+                # 如果日程处理器没有返回，继续正常流程
+                agent = get_agent_by_command(text)
+                print(f"调用Agent: {agent['name']}")
+                response = call_claude(text, agent)
+                print(f"回复: {response[:100]}...")
+        else:
+            # 识别Agent并调用Claude
+            agent = get_agent_by_command(text)
+            print(f"调用Agent: {agent['name']}")
+            response = call_claude(text, agent)
+            print(f"回复: {response[:100]}...")
 
         # 发送回复
         result = reply_message(message_id, response)
