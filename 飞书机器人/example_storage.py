@@ -13,7 +13,7 @@ def demo():
     info = get_storage_info()
     print("存储信息:")
     print(f"  存储路径: {info['storage_path']}")
-    print(f"  是否在 Render: {info['is_render']}")
+    print(f"  是否在 Replit: {info['is_replit']}")
     print(f"  日报目录: {info['report_base']}")
     print()
 

@@ -85,9 +85,9 @@
 
 ### 直接查看文件
 
-在 Render Shell 中：
+在 Replit Shell 中：
 ```bash
-cat /data/日报/2026-05-12/日程安排.md
+cat 日报/2026-05-12/日程安排.md
 ```
 
 ## 技术实现

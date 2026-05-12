@@ -1,39 +1,24 @@
-# 飞书机器人 Render 部署指南
+# 飞书机器人 Replit 部署指南
 
 ## 快速部署
 
-### 1. 准备 GitHub 仓库
+### 1. Fork 仓库
 
-```bash
-cd C:\Users\lenovo\Desktop\agent
-git init
-git add .
-git commit -m "飞书机器人"
-git remote add origin https://github.com/你的用户名/agent.git
-git push -u origin main
-```
+1. 访问 GitHub 仓库页面
+2. 点击右上角 **Fork** 按钮
+3. 将仓库 Fork 到你的账号
 
-### 2. 在 Render 创建服务
+### 2. 在 Replit 创建项目
 
-1. 访问 [render.com](https://render.com) 并注册/登录
-2. 点击 **New +** → **Web Service**
-3. 连接你的 GitHub 仓库
-4. 配置：
-   - **Name**: feishu-bot
-   - **Runtime**: Python
-   - **Build Command**: `pip install -r 飞书机器人/requirements.txt`
-   - **Start Command**: `cd 飞书机器人 && python ws_client_v4.py`
+1. 访问 [replit.com](https://replit.com) 并注册/登录
+2. 点击 **Create Repl**
+3. 选择 **Import from GitHub**
+4. 粘贴你 Fork 的仓库地址
+5. 点击 **Import from GitHub**
 
-### 3. 添加持久化存储
+### 3. 设置环境变量
 
-在 Render 服务的 **Disks** 选项卡中：
-- **Name**: data
-- **Mount Path**: /data
-- **Size**: 1 GB (免费额度)
-
-### 4. 设置环境变量
-
-在 **Environment** 选项卡中添加：
+在 Replit 项目中，点击左侧 **Secrets** (锁图标)，添加以下环境变量：
 
 | Key | Value |
 |-----|-------|
@@ -42,20 +27,28 @@ git push -u origin main
 | `FEISHU_APP_ID` | `cli_aa8b6d69b4f95bec` |
 | `FEISHU_APP_SECRET` | `1FFHn4A3RQekxOaFjB1gpfvo0IrB57uh` |
 | `FEISHU_CHAT_ID` | `oc_c0a8434e665e3fe113a4e82de30959c0` |
-| `STORAGE_PATH` | `/data` |
+| `STORAGE_PATH` | `/home/runner/agent` |
 
-### 5. 部署
+### 4. 安装依赖
 
-点击 **Create Service**，Render 会自动部署。
+在 Replit 的 Shell 中运行：
+
+```bash
+pip install -r 飞书机器人/requirements.txt
+```
+
+### 5. 点击 Run
+
+点击顶部的 **Run** 按钮启动机器人。
 
 ---
 
 ## 存储结构
 
-部署后，日报文件会存储在：
+部署后，日报文件会存储在项目目录下：
 
 ```
-/data/
+/home/runner/agent/
 └── 日报/
     ├── 2026-05-12/
     │   ├── 新闻简报.md
@@ -76,10 +69,10 @@ git push -u origin main
 
 ### 查看存储的日报
 
-在 Render 控制台：
-1. 进入你的服务
-2. 点击 **Shell** 选项卡
-3. 运行 `ls /data/日报/` 查看所有日报
+在 Replit 的 Shell 中运行：
+```bash
+ls 日报/
+```
 
 ---
 
@@ -98,16 +91,16 @@ python ws_client_v4.py
 ## 注意事项
 
 1. **免费额度限制**
-   - 持久化存储：1 GB 免费
-   - 超出后：$0.25/GB/月
+   - Replit 免费版有使用时间限制
+   - 建议升级到 Hacker 计划获得更好体验
 
 2. **数据备份**
-   - 建议定期备份重要日报
-   - 可以通过 Render Shell 下载文件
+   - Replit 项目会自动保存到 GitHub
+   - 日报文件会随项目一起备份
 
-3. **服务休眠**
-   - 免费服务 15 分钟无请求后会休眠
-   - 首次请求可能需要 30 秒唤醒
+3. **Always On**
+   - 免费版不支持 Always On
+   - 如需 24 小时运行，需要升级计划或使用外部保活服务
 
 4. **日志查看**
-   - 在 Render 控制台的 **Logs** 选项卡查看
+   - 在 Replit 控制台的 **Console** 区域查看

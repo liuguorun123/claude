@@ -1,0 +1,8 @@
+run = "cd 飞书机器人 && python ws_client_v4.py"
+entrypoint = "飞书机器人/ws_client_v4.py"
+
+[nix]
+channel = "stable-23_05"
+
+[deployment]
+run = ["sh", "-c", "cd 飞书机器人 && python ws_client_v4.py"]

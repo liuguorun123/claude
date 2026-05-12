@@ -1,13 +1,13 @@
 """
 存储路径管理
 - 本地开发：使用项目目录下的 日报 文件夹
-- Render 部署：使用 /data 持久化存储
+- Replit 部署：使用项目目录持久化存储
 """
 import os
 from datetime import datetime
 
 # 存储路径配置
-# 本地开发时使用项目目录，Render 部署时使用 /data
+# 本地开发时使用项目目录，Replit 部署时也使用项目目录
 STORAGE_PATH = os.getenv("STORAGE_PATH", os.path.dirname(os.path.abspath(__file__)))
 
 def get_report_dir(date_str: str = None) -> str:
@@ -66,6 +66,6 @@ def get_storage_info() -> dict:
     """获取存储信息"""
     return {
         "storage_path": STORAGE_PATH,
-        "is_render": os.path.exists("/data"),
+        "is_replit": os.getenv("REPL_ID") is not None,
         "report_base": os.path.join(STORAGE_PATH, "日报")
     }
