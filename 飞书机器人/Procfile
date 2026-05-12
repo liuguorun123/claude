@@ -1,0 +1,1 @@
+worker: python ws_client_v4.py
